@@ -1,9 +1,10 @@
 import { defineConfig, type HtmlTagDescriptor, type Plugin } from 'vite'
 import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
+import { readFileSync } from 'node:fs'
 import path from 'node:path'
 
-import siteConfiguration from './.figma/make/site.json'
+const siteConfiguration = loadSiteConfiguration()
 
 
 // Vite config — https://vitejs.dev/config/
@@ -242,6 +243,15 @@ function figmaSiteConfiguration(config: FigmaSiteConfiguration): Plugin {
         }
       },
     },
+  }
+}
+
+function loadSiteConfiguration(): FigmaSiteConfiguration {
+  try {
+    const siteJsonUrl = new URL('./.figma/make/site.json', import.meta.url)
+    return JSON.parse(readFileSync(siteJsonUrl, 'utf-8')) as FigmaSiteConfiguration
+  } catch {
+    return {}
   }
 }
 
