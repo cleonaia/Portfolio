@@ -1,0 +1,12 @@
+{
+  "title": "Portfolio",
+  "language": "es",
+  "description": "Portfolio de Leo, estudiante de Ingeniería Informática y desarrollador creativo especializado en experiencias web, visión artificial y hacking ético.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
